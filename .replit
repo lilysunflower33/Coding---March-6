@@ -1,2 +1,2 @@
 language="python"
-run="python basic/hello.py"
+run="python basic/types.py"
