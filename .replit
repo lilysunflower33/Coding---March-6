@@ -1,2 +1,2 @@
 language="python"
-run="python lesson-one/sum_of_even_numbers.py"
+run="python lesson-one/guessnumgame.py"

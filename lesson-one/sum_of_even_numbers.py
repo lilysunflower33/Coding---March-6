@@ -10,3 +10,5 @@ while i<=highestnum:
   print("i={1} total = {0}".format(total, i))
   i=i+1
 print("final total = {0}".format(total))
+i = lowestnum
+print("The sum of even numbers between ",i, "and ",highestnum,"equals ",total)

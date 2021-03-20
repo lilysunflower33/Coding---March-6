@@ -12,7 +12,7 @@ while True:
     print("bark bark")
   elif animal == "cat":
     print("meow meow")
-    else animal == 'bye':
+  else animal == 'bye':
       break
   elif animal =='con':
     continue
