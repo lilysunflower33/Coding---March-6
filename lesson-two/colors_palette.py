@@ -12,7 +12,8 @@ def colors(stdscr):
     #can not use 0 for init_pair
     curses.init_pair(i + 1, i, -1)
     # -1 is a black background
-    stdscr.addstr("[{0}]".format (str(i + 1)), curses.color_pair(i + 1))
+    
+    stdscr.addstr("[{0}-{1}]".format (str(i + 1), chr(9608) * 3), curses.color_pair(i + 1))
   
   stdscr.getch()
 
