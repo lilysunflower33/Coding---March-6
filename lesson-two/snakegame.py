@@ -29,14 +29,18 @@ def snake(stdscr):
     stdscr.addstr(unit[0], unit[1], chr(9608))
 
   # randomly generate and place the snake food 
-  food = 
+  food_ch = "*"
+  food = [
+
+  ]
 
   while True:
-    stdscr.getch()
+    user_key = stdscr.getch()
 
     # exit game when player preses ESC, q, or Q
     if user_key in [27, 113, 81]:
       break
+    elif user_key in [curses.]
 
     # add new head
     head = snake[0]

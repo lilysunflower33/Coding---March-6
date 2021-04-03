@@ -25,6 +25,9 @@ def colors(stdscr):
 
     stdscr.addstr(y, x, "{0}".format (chr(9608) * 4), curses.color_pair(i + 1))
     # stdscr.addstr("[{0}-{1}]".format (str(i + 1), chr(9608) * 3), curses.color_pair(i + 1))
+
+    if i%16 == 0 and i != 0 and i != 17:
+      stdscr.addstr("\n")
   
   stdscr.getch()
 

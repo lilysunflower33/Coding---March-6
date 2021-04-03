@@ -1,2 +1,2 @@
 language="python"
-run="python lesson-two/imporving_coordinate.py"
+run="python lesson-two/curses_coordinate.py"
