@@ -15,8 +15,8 @@ def window(stdscr):
     stdscr.addstr(0, 0, chr(9484))
 
     # paint the measure mark,
-    stdscr.addstr(2, 3, "3")
-    stdscr.addstr(3, 2, "3")
+    stdscr.addstr(1, 2, "0")
+    stdscr.addstr(2, 1, "0")
 
     # paint the x axis scale
     for x in range(1, sw):
@@ -28,17 +28,28 @@ def window(stdscr):
             x_str = str(x)
             # paint the x axis scale.
             for i in range(0, len(x_str)):
-                stdscr.addstr(3 - 1 - i, x, x_str[len(x_str) - 1 - i])
+              stdscr.addstr(3 - 1 - i, x, x_str[len(x_str) - 1 - i])
+              # stdscr.addstr(x, 0, chr(9516))
+              # stdscr.addstr(0, 2, chr(9516))
+              stdscr.addstr(0, 10, chr(9516))
+              stdscr.addstr(0, 20, chr(9516))
+              stdscr.addstr(0, 30, chr(9516))
+              stdscr.addstr(0, 40, chr(9516))
+              stdscr.addstr(0, 50, chr(9516))
+              stdscr.addstr(0, 60, chr(9516))
+              stdscr.addstr(0, 70, chr(9516))
     # paint the ending arrow 9658 - ►
     stdscr.addstr(0, sw - 1, chr(9658))
 
     # paint the y axis scale
     for y in range(1, sh):
-        # │ 9474
+        # 9474
         stdscr.addstr(y, 0, chr(9474))
         if y % 10 == 0:
-            y_str = str(y)
-            stdscr.addstr(y, 3 - len(y_str), y_str)
+          y_str = str(y)
+          stdscr.addstr(y, 1, y_str)
+          stdscr.addstr(y, 0, chr(9500))
+          # stdscr.addstr(2, 0, chr(9500))
     # paint the ending ▼ 9660
     stdscr.addstr(sh - 1, 0, chr(9660))
 
@@ -50,7 +61,7 @@ def window(stdscr):
     cursor_ch = chr(9608)
     y, x = sh // 2 - 6, sw // 2 
     stdscr.addstr(y, x, cursor_ch)
-    # paint the coordinate message.
+    # paint the coordinate message
     stdscr.addstr(sh // 2, sw // 2 - 7, '(y={0}, x={1})'.format(y, x))
     ny, nx = y, x
 
@@ -59,7 +70,7 @@ def window(stdscr):
 
         user_key = stdscr.getch()
 
-        # exit when user press ESC q or Q
+        # exit when user presses ESC q or Q
         if user_key in [27, 113, 81]:
             break
 
