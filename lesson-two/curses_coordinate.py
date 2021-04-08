@@ -2,7 +2,7 @@ import curses
 
 def window(stdscr):
  
-    # curses.curs_set(0)
+    curses.curs_set(0)
 
     # get size of the screen.
     sh, sw = stdscr.getmaxyx()
@@ -12,41 +12,62 @@ def window(stdscr):
     # ► 9658 ▼ 9660
     # more in page for box drawing unicode
     # https://unicode-table.com/en/blocks/box-drawing/
+    # http://xahlee.info/comp/unicode_drawing_shapes.html
     stdscr.addstr(0, 0, chr(9484))
 
     # paint the measure mark,
     stdscr.addstr(1, 2, "0")
-    stdscr.addstr(2, 1, "0")
+    stdscr.addstr(2, 1, "0") 
+    # stdscr.addstr(1, 1, "0")
 
     # paint the x axis scale
     for x in range(1, sw):
       # ─ = 9472
       stdscr.addstr(0, x, chr(9472))
-      # only paint the 10s scale.
+      
+      # paint the vertical grid lines for every five units
+      if x % 5 == 0:
+        stdscr.addstr(0, x, chr(9516))
+        for y in range(1, sh):
+          stdscr.addstr(y, x, chr(9474))
+
+      # only paint the 10s scale
       if x % 10 == 0:
       # if y = 1, y % 10 = 1 
         # conver the x-axis to string
         x_str = str(x)
+        
         # paint the x axis scale
         for i in range(0, len(x_str)):
           stdscr.addstr(3 - 1 - i, x, x_str[len(x_str) - 1 - i])
-          #if x_str > 2: 
-            #stdscr.addstr("\n")
+          if len(x_str) > 2: 
+            stdscr.addstr(3 - i, x, x_str[len(x_str) - 1 - i])
+        
         # paint the measure marks
         stdscr.addstr(0, x, chr(9516))
         # stdscr.addstr(0, 2, chr(9516))
+    
     # paint the ending arrow 9658 - ►
     stdscr.addstr(0, sw - 1, chr(9658))
 
     # paint the y axis scale
     for y in range(1, sh):
       # | = 9474
-      stdscr.addstr(y, 0, chr(9474))
+      stdscr.addstr(y, 0, chr(9474)) 
+
+      # paint the horizontal grid lines every five units 
+      if y % 5 == 0: 
+        stdscr.addstr(y, 0, chr(9500))
+        for x in range(1, sw): 
+          stdscr.addstr(y, x, chr(9472))
+
       if y % 10 == 0:
         y_str = str(y)
         stdscr.addstr(y, 1, y_str)
+        
         stdscr.addstr(y, 0, chr(9500))
         # stdscr.addstr(2, 0, chr(9500))
+    
     # paint the ending ▼ 9660
     stdscr.addstr(sh - 1, 0, chr(9660))
 
@@ -89,17 +110,17 @@ def window(stdscr):
         if x > 0:
           nx = x - 1
 
-    # erase the previous location by paint the white space.
-    stdscr.addstr(y, x, ' ')
-    # paint the new location.
-    stdscr.addstr(ny, nx, cursor_ch)
-    y, x = ny, nx
+      # erase the previous location by paint the white space.
+      stdscr.addstr(y, x, ' ')
+     # paint the new location.
+      stdscr.addstr(ny, nx, cursor_ch)
+      y, x = ny, nx
 
-    # paint the (y, x) coordinate the at the center of the screen
-    # there are 2 steps:
-    # - erase the previous painting with white space
-    stdscr.addstr(sh // 2, sw // 2 - 7, ' ' * 15)
-    # - paint the new coordinate.
-    stdscr.addstr(sh // 2, sw // 2 - 7, '(y={0}, x={1})'.format(y, x))
+      # paint the (y, x) coordinate the at the center of the screen
+     # there are 2 steps:
+     # - erase the previous painting with white space
+      stdscr.addstr(sh // 2, sw // 2 - 7, ' ' * 15)
+      # - paint the new coordinate.
+      stdscr.addstr(sh // 2, sw // 2 - 7, '(y={0}, x={1})'.format(y, x))
 
 curses.wrapper(window)
