@@ -7,7 +7,7 @@ def window(stdscr):
     # get size of the screen.
     sh, sw = stdscr.getmaxyx()
 
-    # ┌ 9484 ├ 9500 ┴ 9524 ┬ 9516 
+    # ┌ 9484 ├ 9500 ┴ 9524 ┬ 9516 ┼ 9532
     # ─ 9472 │ 9474
     # ► 9658 ▼ 9660
     # more in page for box drawing unicode
@@ -43,7 +43,7 @@ def window(stdscr):
           if len(x_str) > 2: 
             stdscr.addstr(3 - i, x, x_str[len(x_str) - 1 - i])
         
-        # paint the measure marks
+        # re-paint the measure marks
         stdscr.addstr(0, x, chr(9516))
         # stdscr.addstr(0, 2, chr(9516))
     
@@ -59,12 +59,19 @@ def window(stdscr):
       if y % 5 == 0: 
         stdscr.addstr(y, 0, chr(9500))
         for x in range(1, sw): 
-          stdscr.addstr(y, x, chr(9472))
+          stdscr.addstr(y, x, chr(9472)) 
+
+        # paint the criss-cross where the verticle and horizontal grid lines meet 
+          if x % 5 == 0:
+            stdscr.addstr(y, x, chr(9532))
 
       if y % 10 == 0:
         y_str = str(y)
+
+        # paint the y axis scale
         stdscr.addstr(y, 1, y_str)
         
+        # re-paint the measure matk
         stdscr.addstr(y, 0, chr(9500))
         # stdscr.addstr(2, 0, chr(9500))
     
