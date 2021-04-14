@@ -61,7 +61,7 @@ def window(stdscr):
         for x in range(1, sw): 
           stdscr.addstr(y, x, chr(9472)) 
 
-        # paint the criss-cross where the verticle and horizontal grid lines meet 
+        # paint the cross where the verticle and horizontal grid lines meet 
           if x % 5 == 0:
             stdscr.addstr(y, x, chr(9532))
 
