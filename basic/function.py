@@ -4,6 +4,10 @@ def simple():
 simple()
 
 def simple(name, second_name):
-  print("hello " + name + " " + second_name) 
+  return"hello " + name + " " + second_name
 
-simple("name1", "name2")
+msg = simple("name1", "name2")
+print(msg)
+
+# a function can code another function 
+# something can not equal a function 

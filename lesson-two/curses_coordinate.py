@@ -1,7 +1,7 @@
 import curses
 
 def window(stdscr):
- 
+  
     curses.curs_set(0)
 
     # get size of the screen.
