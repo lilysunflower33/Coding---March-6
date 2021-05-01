@@ -87,7 +87,7 @@ def snake_game(stdscr):
         new_head = [head[0] + 1, head[1]]
 
       # calculate the new snake after it moves
-      stdscr.addstr(new_head[0], new_head[1], snake_ch)
+      stdscr.addstr(new_head[0], new_head[1], snake_ch) 
       # store the new head in a snake variable 
       snake.insert(0, new_head)
 
@@ -170,7 +170,13 @@ def snake_game(stdscr):
       direction = curses.KEY_RIGHT 
 
       # re-paint food 
-      snake_food(stdscr)
+      food = snake_food(stdscr)
+
+      if snake[0][0] == food and snake[0][1] == food: 
+        snake_food(stdscr) 
+
+        interval = interval - 10 
+        stdscr.timeout(interval) 
 
       # re-paint the score 
       score = 0
