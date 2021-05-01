@@ -1,2 +1,2 @@
 language="python3"
-run="python lesson-two/snakegame.py"
+run="python lesson3/snakegame.py"
