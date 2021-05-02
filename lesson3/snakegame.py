@@ -15,7 +15,7 @@ def snake_game(stdscr):
   
   # timeout is set and counted in milliseconds 
   # timeout is the defult moving speed for the snake 
-  interval = 225
+  interval = 250 
   stdscr.timeout(interval)
 
   # set the welcome message 
@@ -23,25 +23,21 @@ def snake_game(stdscr):
 
   # define the gameboard
   border = [
+    # top left vertex coordinate
     [5, 1],
+    # bottom right vertex coordinate
     [sh - 2, sw - 2]  
   ]
   textpad.rectangle(stdscr, border[0][0], border[0][1], border[1][0], border[1][1])
 
-  snake = [
-    [sh // 2, sw // 2 + 1],
-    [sh // 2, sw // 2],
-    [sh // 2, sw // 2 - 1],
-  ]
-  snake_ch = chr(9608) 
-  for unit in snake:
-    stdscr.addstr(unit[0], unit[1], snake_ch)
+  snake = snake_body(stdscr)
 
   # set up the defult moving direction 
   direction = curses.KEY_RIGHT
 
   # randomly generate and place the snake food 
   food = snake_food(stdscr) 
+  snake_ch = chr(9608)
 
   score = 0
   points(stdscr, score) 
@@ -154,12 +150,9 @@ def snake_game(stdscr):
       stdscr.addstr( sh // 2 - 3, sw // 2 , ' ' * 40)
 
       # reset the snake to center of the screen
-      snake = [
-        [sh // 2, sw // 2 + 1],
-        [sh // 2, sw // 2],
-        [sh // 2, sw // 2 - 1],
-      ]
+      snake = snake_body(stdscr)
       snake_ch = chr(9608) 
+      # paint the snake 
       for unit in snake:
         stdscr.addstr(unit[0], unit[1], snake_ch) 
 
@@ -233,11 +226,7 @@ def snake_body(stdscr):
     [sh // 2, sw // 2 - 1],
   ]
 
-  snake_ch = chr(9608) 
-
-  # paint the snake 
-  for unit in snake:
-    stdscr.addstr(unit[0], unit[1], snake_ch)
+  return snake
 
 def snake_food(stdscr): 
   # create a function to radomly generate the snake food without needing to type in code mutiple times
@@ -269,3 +258,9 @@ def points(stdscr, score):
   # restart game function 
 
 curses.wrapper(snake_game)
+
+# bonus work: 
+
+  # make the snake game run by itself without a person playing 
+
+  # colour the snake 
