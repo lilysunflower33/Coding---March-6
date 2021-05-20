@@ -11,8 +11,8 @@ def window(stdscr):
     stdscr.addstr(3, 3, chr(9484))
 
     # paint the
-    stdscr.addstr(2, 3, "3")
-    stdscr.addstr(3, 2, "3")
+    stdscr.addstr(2, 3, "0")
+    stdscr.addstr(3, 2, "0")
 
     # paint the x axis.
     for x in range(4, sw):
