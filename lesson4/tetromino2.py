@@ -5,7 +5,7 @@ def main(stdscr):
   curses.curs_set(False) 
 
   stdscr.addstr(2, 2, 'PAINTING TETRIS BLOCKS')
-  stdscr.addstr(3, 2, '(TETRIMINOS)')
+  stdscr.addstr(3, 2, '(TETRIMINOES)')
 
   tetrominos(stdscr, 'O-block')
   tetrominos(stdscr, 'I-block')

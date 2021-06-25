@@ -4,7 +4,7 @@ def main(stdscr):
 
   curses.curs_set(False) 
 
-  stdscr.addstr(2, 2, 'Moving Tetrominos')
+  stdscr.addstr(2, 2, 'Moving Tetrominoes')
   stdscr.addstr(3, 2, 'Press q to Quit')
 
   tetrominos(stdscr, 'O-block')
