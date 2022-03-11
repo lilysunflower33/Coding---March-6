@@ -3,15 +3,6 @@ import curses
 unit_ch = chr(9609)
 erase_ch = ' '
 
-def setI(stdscr):
-
-  I_block = [
-    [5,2], [5,4], [5,6], [5,8]
-  ] 
-
-  for unit in I_block:
-    stdscr.addstr(unit[0], unit[1], unit_ch, curses.color_pair(52))
-
 def main(stdscr):
 
   curses.curs_set(False) 
@@ -29,7 +20,11 @@ def main(stdscr):
 
 def movement(stdscr):
   
-  I_block = setI(stdscr)
+  I_block = [
+    [5,2], [5,4], [5,6], [5,8]
+  ] 
+  for unit in I_block:
+    stdscr.addstr(unit[0], unit[1], unit_ch, curses.color_pair(52))
 
   while True: 
     key = stdscr.getch()
@@ -135,7 +130,16 @@ def movement(stdscr):
         stdscr.addstr(unit[0], unit[1], erase_ch) 
 
 def rotation(stdscr):
-    
+  
+  I_block = [
+    [5,2], [5,4], [5,6], [5,8]
+  ] 
+  for unit in I_block:
+    stdscr.addstr(unit[0], unit[1], unit_ch, curses.color_pair(52)) 
+
+  while True: 
+    key = stdscr.getch()
+
     if key == 32: 
 
       new1 = [
